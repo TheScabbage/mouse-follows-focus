@@ -83,6 +83,6 @@ if __name__ == '__main__':
         while True:
             event = disp.next_event()
             if (event.type == Xlib.X.PropertyNotify and
-                    event.atom == NET_ACTIVE_WINDOW):
+                event.atom == NET_ACTIVE_WINDOW):
                 break
 
