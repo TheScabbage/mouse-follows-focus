@@ -69,8 +69,8 @@ if __name__ == '__main__':
 
             if geo:
                 if mouseX >= geo['x'] and mouseX <= geo['x'] + geo['width'] and \
-                   mouseY >= geo['y'] and mouseY <= geo['y'] + geo['height']:
-                    #print('Mouse is inside newly focused window')
+                        mouseY >= geo['y'] and mouseY <= geo['y'] + geo['height']:
+                            #print('Mouse is inside newly focused window')
                     None
                 else:
                     #print('Mouse is outside newly focused window')
@@ -78,11 +78,31 @@ if __name__ == '__main__':
                     midY = geo['y'] + geo['height'] // 2
 
                     geo = get_window_geometry(root, win);
-                    root.warp_pointer(midX, midY)
+                    
+                    startX = mouseX
+                    startY = mouseY
+
+                    steps = 256
+                    inc = 1 / steps
+                    for ii in range(0, steps):
+                        t = inc * ii
+                        mouseX = tween(startX, midX, t)
+                        mouseY = tween(startY, midY, t)
+
+                        time.sleep(0.0005)
+                        print('Moving mouse to ' + str(mouseX) + ', ' + str(mouseY) + ', target: ' + str(midX) + ', ' + str(midY))
+                        root.warp_pointer(mouseX, mouseY)
+                        disp.flush()
+                        disp.sync()
+
+                    root.warp_pointer(midX, midY);
+                    disp.sync()
 
         while True:
             event = disp.next_event()
             if (event.type == Xlib.X.PropertyNotify and
                 event.atom == NET_ACTIVE_WINDOW):
                 break
+
+
 
