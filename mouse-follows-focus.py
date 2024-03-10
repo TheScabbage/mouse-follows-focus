@@ -90,7 +90,7 @@ if __name__ == '__main__':
                         mouseY = tween(startY, midY, t)
 
                         time.sleep(0.0005)
-                        print('Moving mouse to ' + str(mouseX) + ', ' + str(mouseY) + ', target: ' + str(midX) + ', ' + str(midY))
+                        # print('Moving mouse to ' + str(mouseX) + ', ' + str(mouseY) + ', target: ' + str(midX) + ', ' + str(midY))
                         root.warp_pointer(mouseX, mouseY)
                         disp.flush()
                         disp.sync()
