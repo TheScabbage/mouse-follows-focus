@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
             # Sleep for a sensible amount of time before looking at window geometry. 
             # This helps with scripts that re-dimension the window after creating it
-            time.sleep(0.150); # seconds
+            time.sleep(0.1);
 
             mouseX, mouseY = get_mouse_pos(root)
             geo = get_window_geometry(root, win);
