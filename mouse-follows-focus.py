@@ -44,6 +44,13 @@ def get_mouse_pos(root):
     y = root.query_pointer()._data['win_y']
     return x, y
 
+def tween(s, e, t):
+    t = 1 - t
+    t *= t
+    t *= t
+    t = 1 - t
+    diff = e - s
+    return int(s + t * diff)
 
 if __name__ == '__main__':
     root.change_attributes(event_mask=Xlib.X.PropertyChangeMask)
